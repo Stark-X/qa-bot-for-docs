@@ -89,6 +89,10 @@ class IndexBuilder(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def set_index_storage(self):
+        pass
+
+    @abstractmethod
     def set_llm_predictor(self, temperature):
         """define LLM"""
         pass
@@ -115,6 +119,7 @@ class Director:
     def construct_text_chatbot(self, docs_path: List[Path]):
         self.builder.reset()
         self.builder.set_docs_reader(docs_path=docs_path)
+        self.builder.set_index_storage()
         self.builder.set_prompt_template()
         self.builder.set_index_class()
         self.builder.set_llm_predictor(0)
@@ -126,6 +131,9 @@ class SimpleDocsIndexBuilder(IndexBuilder):
 
     def reset(self):
         self.chatbot = DocsChatBot()
+
+    def set_index_storage(self):
+        self.chatbot.set_index_storage(Path("index.json"))
 
     def set_prompt_template(self):
         prompt_tmpl = (
@@ -164,7 +172,7 @@ if __name__ == "__main__":
     console = Console()
     builder = SimpleDocsIndexBuilder()
     director = Director(builder)
-    director.construct_text_chatbot([Path("data_simple.txt")])
+    director.construct_text_chatbot([Path("data_sample.txt")])
 
     count = 1
     while True:
