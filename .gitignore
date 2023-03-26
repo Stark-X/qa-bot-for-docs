@@ -1,5 +1,6 @@
 # documents to load
 data/
+data.txt
 # embedding index file
 index.json
 

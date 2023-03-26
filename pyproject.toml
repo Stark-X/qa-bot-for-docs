@@ -12,6 +12,7 @@ chromadb = "^0.3.11"
 openai = "^0.27.2"
 llama-index = "^0.4.38"
 tiktoken = "^0.3.2"
+rich = "^13.3.2"
 
 [tool.poetry.dev-dependencies]
 q = "^2.7"
