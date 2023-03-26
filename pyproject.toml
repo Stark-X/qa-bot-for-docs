@@ -1,0 +1,22 @@
+[tool.black]
+line_length = 120
+[tool.poetry]
+name = "qa-bot-for-docs"
+version = "0.1.0"
+description = ""
+authors = ["Stark-X <xiaojiezhi2@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+chromadb = "^0.3.11"
+openai = "^0.27.2"
+llama-index = "^0.4.38"
+tiktoken = "^0.3.2"
+
+[tool.poetry.dev-dependencies]
+q = "^2.7"
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
